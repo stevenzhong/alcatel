@@ -4,10 +4,12 @@ import Home from '@/components/Home'
 import News from '@/components/News'
 import Products from '@/components/Products'
 import Notices from '@/components/Notices'
-import NewsDetails from '@/components/NewsDetails'
+import NewsItems from '@/components/NewsItems'
+import newsDetails from '@/components/NewsDetails'
 Vue.use(Router)
 
 export default new Router({
+  history:true,
   routes: [
     {
       path: '*',
@@ -15,29 +17,53 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Home',
       component: Home
     },
     {
       path: '/news',
-      name: 'News',
       component: News,
       children:[
         {
-          path:'/news/:id',
-          component:NewsDetails
+          path: 'tech',
+          component: NewsItems
+        },
+        {
+          path: 'sport',
+          component: NewsItems
+        },
+        {
+          path: 'edu',
+          component: NewsItems
+        },
+        {
+          path: 'ent',
+          component: NewsItems
+        },
+        {
+          path: 'travel',
+          component: NewsItems
+        },
+        {
+          path: 'war',
+          component: NewsItems
+        },
+        {
+          path: 'money',
+          component: NewsItems
         }
-      ] 
+      ]
     },
     {
       path: '/products',
-      name: 'Products',
       component: Products
     },
     {
       path: '/notices',
-      name: 'Notices',
       component: Notices
+    },
+    {
+      path:'/newsDetails/:id',
+      component:newsDetails
     }
   ]
 })

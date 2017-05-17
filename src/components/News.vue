@@ -2,10 +2,9 @@
 	<div>
 		<h3>热门新闻</h3>
 		<div class="hotnews">
-			<div v-for='item in newsList' :key='item.name'>
-				<router-link :to="{ name: 'News', params: { id: item.name }}">{{item.title}}</router-link>
-			</div>
+			<router-link v-for='item in newsList' :key='item.name' tag='div' :to="item.name">{{item.title}}</router-link>
 		</div>
+
 		<router-view></router-view>
 	</div>
 </template>
@@ -15,13 +14,13 @@ export default {
 	data(){
 		return {
 			newsList:[
-				{name:'tech',title:'最新科技'},
-				{name:'sport',title:'体育'},
-				{name:'edu',title:'教育频道'},
-				{name:'ent',title:'娱乐'},
-				{name:'travel',title:'旅游达人'},
-				{name:'war',title:'军事'},
-				{name:'money',title:'财经啦'},
+				{name:'/news/tech',title:'最新科技'},
+				{name:'/news/sport',title:'体育'},
+				{name:'/news/edu',title:'教育频道'},
+				{name:'/news/ent',title:'娱乐'},
+				{name:'/news/travel',title:'旅游达人'},
+				{name:'/news/war',title:'军事'},
+				{name:'/news/money',title:'财经啦'}
 			]
 		}
 	}

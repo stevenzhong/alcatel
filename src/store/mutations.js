@@ -4,13 +4,15 @@ import {
 	HIDE_LOADING,
 	SHOW_LOADING,
 	FOOTER_HIDE,
-	FOOTER_SHOW
+	FOOTER_SHOW,
+	SHOW_HOTS
 } from './type'
 
 const state={
 	headShow:true,
 	loading:false,
-	footerShow:true
+	footerShow:true,
+	showHots:true
 };
 
 const mutations={
@@ -35,9 +37,11 @@ const mutations={
 	},
 	[FOOTER_SHOW](state){
 		state.footerShow=true;
+	},
+	[SHOW_HOTS](state){
+		state.showHots = true;
 	}
 };
-
 const getters={
 	headShow(state){
 		return state.headShow;
@@ -47,7 +51,10 @@ const getters={
 	},
 	footerShow(state){
 		return state.footerShow;
-	}
+	},
+	// showHots(state){
+	// 	return state.showHots;
+	// }
 };
 
 export default{
