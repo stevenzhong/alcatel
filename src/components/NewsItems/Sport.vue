@@ -2,11 +2,13 @@
 	<div>
 		<ul class="list">
 			<li v-for='item in arrList'>
-				<div class="pic">
-					<img :src="item.imgurl" alt="">
-				</div>
-				<p>{{item.time}}</p>
-				<h3>{{item.title}}</h3>
+				<router-link :to="'/newsDetails/'+item.id">
+					<div class="pic">
+						<img :src="item.imgurl" alt="">
+					</div>
+					<p>{{item.time}}</p>
+					<h3>{{item.title}}</h3>
+				</router-link>
 			</li>
 		</ul>
 	</div>
@@ -20,20 +22,8 @@ export default {
 			showHots:true
 		}
 	},
-	beforeCreate(){
-		if(!this.arrList){
-			this.showHots = false;
-		}
-	},
 	beforeMount() {
-	    this.fetchData('tech');
-	},
-	watch:{
-		$route(to){
-			var str = to.path;
-			var params = str.split('/');
-	    	this.fetchData(params[2]);
-		}
+	    this.fetchData('sport');
 	},
 	methods:{
 		fetchData(type){
@@ -59,7 +49,7 @@ export default {
 	margin:4px 0;
 }
 .list li:last-child{
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 .list li p{
 	color:#969696;

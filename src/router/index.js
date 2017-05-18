@@ -4,7 +4,6 @@ import Home from '@/components/Home'
 import News from '@/components/News'
 import Products from '@/components/Products'
 import Notices from '@/components/Notices'
-import NewsItems from '@/components/NewsItems'
 import newsDetails from '@/components/NewsDetails'
 Vue.use(Router)
 
@@ -24,32 +23,36 @@ export default new Router({
       component: News,
       children:[
         {
+          path:'/',
+          redirect:'tech'
+        },
+        {
           path: 'tech',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Tech.vue'], resolve)
         },
         {
           path: 'sport',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Sport.vue'], resolve)
         },
         {
           path: 'edu',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Edu.vue'], resolve)
         },
         {
           path: 'ent',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Ent.vue'], resolve)
         },
         {
           path: 'travel',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Travel.vue'], resolve)
         },
         {
           path: 'war',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/War.vue'], resolve)
         },
         {
           path: 'money',
-          component: NewsItems
+          component: resolve => require(['@/components/NewsItems/Money.vue'], resolve)
         }
       ]
     },

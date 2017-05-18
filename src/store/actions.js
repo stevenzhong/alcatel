@@ -23,8 +23,5 @@ export default{
 	},
 	showFooter:({commit})=>{
 		commit(types.FOOTER_SHOW)
-	},
-	showHots:({commit})=>{
-		commit(types.SHOW_HOTS)
 	}
 }

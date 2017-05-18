@@ -6,7 +6,7 @@ import router from './router'
 import MintUI from 'mint-ui'
 import axios from 'axios'
 import 'mint-ui/lib/style.css'
-import stores from './store/store'
+import store from './store/store'
 
 Vue.use(MintUI);
 
@@ -18,6 +18,7 @@ Vue.prototype.$http = axios  //其他页面在使用axios的时候直接  this.$
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
