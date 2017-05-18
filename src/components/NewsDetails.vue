@@ -22,7 +22,6 @@ export default {
 		}
 	},
 	beforeMount() {
-		console.log(this.$route.params.id)
 	    this.fetchData(this.$route.params.id);
 	},
 	methods:{
@@ -30,7 +29,6 @@ export default {
 			var _this=this;
 			this.$http.get('http://wangyi.butterfly.mopaasapp.com/detail/api?simpleId='+id).then(function(res){
 				_this.dataList = res.data;
-				console.log(_this.dataList)
 			}).catch(function(err){
 				console.log('文章详细页面:',err);
 			})

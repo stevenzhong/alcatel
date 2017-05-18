@@ -11,9 +11,9 @@ export default {
 	data(){
 		return {
 			imgList:[
-				{id:1,src:require('../assets/img/image1.jpg')},
-				{id:2,src:require('../assets/img/image2.jpg')},
-				{id:3,src:require('../assets/img/image3.jpg')}
+				{id:1,src:require('../../static/img/image1.jpg')},
+				{id:2,src:require('../../static/img/image2.jpg')},
+				{id:3,src:require('../../static/img/image3.jpg')}
 			]
 		}
 	}

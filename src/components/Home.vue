@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="logo">
-    	<img src="../assets/img/logo.png" alt="">
+    	<img src="../../static/img/logo.png" alt="">
     </div>
     <Swiper></Swiper>
     <div class="main">
@@ -10,6 +10,7 @@
     		<li>每天为你推荐精选产品</li>
     		<li>第一时间查看考勤情况</li>
     	</ul>
+    	<div class="pic"><img src="../../static/img/main_bg.png" alt=""></div>
     </div>
 	<div class="kaoqin">
 		<h3>日常考勤</h3>
@@ -104,9 +105,18 @@ export default {
 }
 .main{
 	height: 180px;
-	background: url(../assets/img/main_bg.png) no-repeat;
-	background-position: right bottom;
-	background-size:40% auto;
+	position: relative;
+	overflow: hidden;
+}
+.main .pic{
+	width: 40%;
+	position: absolute;
+	right: -5%;
+	top:-2%;
+}
+.main .pic img{
+	width: 100%;
+	max-width: 100%;
 }
 .main ul{
 	margin-left: 25px;
