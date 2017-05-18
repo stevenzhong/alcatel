@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<h3><span onclick="window.history.go(-1)" style="color:#000;margin-right: 5px;"> < </span>热门新闻</h3>
+		<mt-header title="热门新闻">
+		  <a href="javascript:;" onclick="window.history.go(-1)"slot="left">
+		    <mt-button icon="back">返回</mt-button>
+		  </a>
+		</mt-header>
 		<div class="hotnews">
 			<div v-for='item in newsList' :key='item.name' >
 				<router-link :to='item.name'>{{item.title}}</router-link>
@@ -31,11 +35,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3{
-    padding: 10px 18px;
     font-size: 14px;
     font-weight: 700;
     color: #545454;
     background-color: #f5f5f5;
+}
+h3 a{
+	font-size: 14px;
+	color: red;
 }
 .hotnews{
 	padding: 15px 0 5px 10px;

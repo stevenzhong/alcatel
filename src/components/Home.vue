@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <!-- <div class="logo">
+    <div class="logo">
     	<img src="../assets/img/logo.png" alt="">
-    </div> -->
+    </div>
     <Swiper></Swiper>
     <div class="main">
     	<ul>
@@ -124,6 +124,9 @@ export default {
 	margin-right:5px;
 	font-size: 14px;
 	line-height: 30px;
+}
+.kaoqin{
+	margin-bottom: 40px;
 }
 .kaoqin h3{
     padding: 10px 18px;

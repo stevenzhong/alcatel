@@ -28,7 +28,6 @@ export default {
 		fetchData(type){
 			var _this=this;
 			this.$http.get('http://wangyi.butterfly.mopaasapp.com/news/api?type='+type+'&page=1&limit=10').then(function(res){
-				// console.log(res.data.list);
 				_this.arrList = res.data.list;
 			}).catch(function(err){
 				console.log('文章详细页面:',err);
@@ -38,7 +37,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .list{
 	padding: 15px 5% 0;
