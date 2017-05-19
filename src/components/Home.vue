@@ -21,13 +21,16 @@
 			密&nbsp;&nbsp;&nbsp;码: <input placeholder="请输入密码"  type="password" v-model="password" />
 		</div>
 		<div class="check" @click="showDaily">点击查询</div>
-		<div class="ifobox" v-show="showIfo">
+		<mt-popup v-model="showIfo" closeOnClickModal="true">
+		  <div class="ifobox" >
+		  	<p>用户名称:<span>{{username}}</span></p>
 			<p>上班考勤:<span>{{ifo.a}}</span></p>
 			<p>下班考勤:<span>{{ifo.b}}</span></p>
 		</div>
-		<div class="errbox" v-show="showerr">
-			{{ifo.err}}
-		</div>
+		</mt-popup>
+		<mt-popup v-model="showerr" closeOnClickModal="true">
+		  	<div class="errbox"><p>{{ifo.err}}</p></div>
+		</mt-popup>
 	</div>
   </div>
 </template>
@@ -159,23 +162,20 @@ export default {
 	text-align: center;
 }
 .ifobox,.errbox{
-	width: 80%;
-	position: fixed;
-	left:50%;
-	top:50%;
-	transform: translate3d(-50%,-50%,0);
-	background: rgba(0,0,0,.7);
-	color:#fff;
-	height: 120px;
+	margin:0 auto;
+	color:#000;
+	height: 140px;
 }
-.errbox{
-	line-height: 60px;
+.errbox p{
+	font-size: 14px;
+	line-height: 24px;
+	margin:10px 20px 10px 20px;
 	text-align: center;
 }
 .ifobox p{
 	font-size: 14px;
 	line-height: 24px;
-	margin:10px 0 10px 20px;
+	margin:10px 20px 10px 20px;
 }
 .ifobox p span{
 	margin-left: 20px;

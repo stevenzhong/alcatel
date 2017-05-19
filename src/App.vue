@@ -1,24 +1,25 @@
 <template>
   <div id="app">
+    <loading v-if="loading"></loading>
     <router-view></router-view>
     <vFooter v-show="footerShow"></vFooter>
   </div>
 </template>
 
 <script>
-import vHeader from './components/Header.vue'
 import vFooter from './components/Footer.vue'
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
   name: 'app',
   computed:mapGetters([
-  	'footerShow'
+  	'footerShow',
+    'loading'
   ]),
   watch:{
   	$route(to){
-  		var reg=/news\/\D+/;
-      var reg1 = /newsDetails\/\d+/;
-  		if(reg.test(to.path) || reg1.test(to.path)){
+  		// var reg=/news\/\D+/;
+    //   var reg1 = /newsDetails\/\d+/;
+  		if(to.path !== '/home'){
   			this.$store.dispatch('hideFooter');
   		}else{
   			this.$store.dispatch('showFooter');
@@ -26,7 +27,6 @@ export default {
   	}
   },
   components:{
-  	vHeader,
     vFooter
   }
 }

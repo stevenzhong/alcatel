@@ -43,6 +43,13 @@ h3{
 	font-size: 16px;
 	line-height: 32px;
 	text-align: center;
+	margin-top: 40px;
+}
+header{
+	width: 100%;
+	position: fixed;
+	top:0;
+	z-index: 999;
 }
 .time{
 	font-size: 12px;
@@ -55,5 +62,6 @@ h3{
 }
 .content{
 	padding: 0 10px;
+	overflow: hidden;
 }
 </style>

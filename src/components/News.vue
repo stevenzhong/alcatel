@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<mt-header title="热门新闻">
+		<mt-header :title="title">
 		  <a href="javascript:;" onclick="window.history.go(-1)"slot="left">
 		    <mt-button icon="back">返回</mt-button>
 		  </a>
 		</mt-header>
-		<div class="hotnews">
+		<div class="hotnews clear">
 			<div v-for='item in newsList' :key='item.name' >
-				<router-link :to='item.name'>{{item.title}}</router-link>
+				<router-link :to='item.name' ><span @click='getTitle(item.title)'>{{item.title}}</span></router-link>
 			</div>
 		</div>
 		<router-view></router-view>
@@ -26,7 +26,13 @@ export default {
 				{name:'travel',title:'旅游达人'},
 				{name:'war',title:'军事'},
 				{name:'money',title:'财经啦'}
-			]
+			],
+			title:'最新科技'
+		}
+	},
+	methods:{
+		getTitle(name){
+			this.title = name;
 		}
 	}
 }
@@ -44,7 +50,15 @@ h3 a{
 	font-size: 14px;
 	color: red;
 }
+header{
+	width: 100%;
+	position: fixed;
+	top:0;
+	font-size:14px;
+	z-index: 999;
+}
 .hotnews{
+	margin-top:40px;
 	padding: 15px 0 5px 10px;
     font-size: 0;
 }
@@ -52,12 +66,19 @@ h3 a{
 	display: inline-block;
 	padding: 2px 8px;
 	margin: 0 12px 12px 0;
-	border:1px solid #ea6f5a;
+	border:1px solid #969696;
 	border-radius: 4px;
 	font-size: 14px;
-	color:#ea6f5a;
+	color:#969696;
+}
+.hotnews div.active{
+	border:1px solid #ea6f5a;
 }
 .hotnews div a{
+	color:#969696;
+}
+.hotnews div a.active{
+	font-size: 16px;
 	color:#ea6f5a;
 }
 </style>

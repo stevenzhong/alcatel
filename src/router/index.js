@@ -4,10 +4,11 @@ import Home from '@/components/Home'
 import News from '@/components/News'
 import Products from '@/components/Products'
 import Notices from '@/components/Notices'
-import newsDetails from '@/components/NewsDetails'
+import NewsDetails from '@/components/NewsDetails'
 Vue.use(Router)
 
 export default new Router({
+  linkActiveClass: 'active',
   history:true,
   routes: [
     {
@@ -66,7 +67,7 @@ export default new Router({
     },
     {
       path:'/newsDetails/:id',
-      component:newsDetails
+      component:NewsDetails
     }
   ]
 })

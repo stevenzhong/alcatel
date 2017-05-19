@@ -1,16 +1,27 @@
 <template>
 	<div>
-		<ul class="list">
-			<li v-for='item in arrList'>
-				<router-link :to="'/newsDetails/'+item.id">
-					<div class="pic">
-						<img :src="item.imgurl" alt="">
-					</div>
-					<p>{{item.time}}</p>
-					<h3>{{item.title}}</h3>
-				</router-link>
-			</li>
-		</ul>
+		<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" @top-status-change="handleTopChange">
+			<ul class="list">
+				<li v-for='item in arrList'>
+					<router-link :to="'/newsDetails/'+item.id">
+						<div class="pic">
+							<img :src="item.imgurl" alt="">
+						</div>
+						<p>{{item.time}}</p>
+						<h3>{{item.title}}</h3>
+					</router-link>
+				</li>
+			</ul>
+			<div slot="top" class="mint-loadmore-top">
+		      <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }"><img src="../../../static/img/refresh.gif" height="32" width="32"alt=""></span>
+		    </div>
+		    <div slot="bottom" class="mint-loadmore-bottom">
+		      <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }"><img src="../../../static/img/loading.gif" alt=""></span>
+		    </div>
+		    <div class="allLoaded" v-show="allLoaded">
+		  		----到底了----
+		  	</div>
+	  	</mt-loadmore>
 	</div>
 </template>
 
@@ -19,22 +30,40 @@ export default {
 	data(){
 		return{
 			arrList:[],
-			showHots:true
+			topStatus:'',
+			allLoaded:false,
+			nums:5
 		}
 	},
 	beforeMount() {
-	    this.fetchData('ent');
+	    this.fetchData('ent',this.nums);
 	},
 	methods:{
-		fetchData(type){
+		fetchData(type,nums){
 			var _this=this;
-			this.$http.get('http://wangyi.butterfly.mopaasapp.com/news/api?type='+type+'&page=1&limit=10').then(function(res){
+			this.$http.get('http://wangyi.butterfly.mopaasapp.com/news/api?type='+type+'&page=1&limit='+nums).then(function(res){
 				// console.log(res.data.list);
 				_this.arrList = res.data.list;
 			}).catch(function(err){
 				console.log('文章详细页面:',err);
 			})
-		}
+		},
+		loadTop() {
+			this.arrList = [];
+			this.fetchData('ent',this.nums);
+		  	this.$refs.loadmore.onTopLoaded();
+		},
+		loadBottom() {
+			this.nums +=5;
+		   this.fetchData('ent',this.nums);
+		   if(this.nums >100){
+		   		this.allLoaded = true;// 若数据已全部获取完毕
+		   }
+		   this.$refs.loadmore.onBottomLoaded();
+		},
+		handleTopChange(status) {
+	       this.topStatus = status;
+	    }
 	}
 }
 </script>
@@ -48,8 +77,15 @@ export default {
 .list li{
 	margin:4px 0;
 }
-.list li:last-child{
-	margin-bottom: 40px;
+.list li:last-child h3{
+	margin-bottom: 0px;
+}
+.allLoaded{
+	background-color: #f3f3f3;
+	border-top: 1px solid #ddd;
+	padding: 10px 0;
+	text-align: center;
+	margin-top: -5px;
 }
 .list li p{
 	color:#969696;
