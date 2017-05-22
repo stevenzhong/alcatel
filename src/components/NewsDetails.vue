@@ -4,7 +4,7 @@
 		  <a href="javascript:;" onclick="window.history.go(-1)" slot="left">
 		    <mt-button icon="back">返回</mt-button>
 		  </a>
-		  <mt-button icon="more" slot="right"></mt-button>
+		  <mt-button icon="more" slot="right" @click="share"></mt-button>
 		</mt-header>
 		<h3>{{dataList.title}}</h3>
 		<div class="time">{{dataList.time}}</div>

@@ -5,6 +5,7 @@ import News from '@/components/News'
 import Products from '@/components/Products'
 import Notices from '@/components/Notices'
 import NewsDetails from '@/components/NewsDetails'
+
 Vue.use(Router)
 
 export default new Router({

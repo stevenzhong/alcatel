@@ -18,8 +18,10 @@ export default Mock.mock(/\.php/,{
 			'id|+1':1,
 			imgurl:'../../static/img/phone.jpg',
 			'color|2-6':[
-				{colorId:'@integer(1,6)'}
-			]
+				'@integer(1,6)'
+			],
+			title:'@csentence(18,24)',
+			sold: '@integer(10,1000)'
 		}
 	]
 });
