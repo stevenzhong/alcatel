@@ -1,4 +1,4 @@
-# alcatel
+﻿# alcatel
 
 前言
 
@@ -18,6 +18,8 @@ cd alcatel
 npm install
 
 npm run dev
+
+测试一下
 
 
 
